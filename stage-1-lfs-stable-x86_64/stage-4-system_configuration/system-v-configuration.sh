@@ -181,7 +181,7 @@ UNICODE="1"
 
 ### layout
 # /usr/share/keymaps/i386/qwerty/ruwin_cplk-UTF-8.map.gz
-KEYMAP="ruwin_cplk-UTF-8"
+KEYMAP="us"
 
 ### font
 # fonts testing in the console
@@ -194,7 +194,7 @@ KEYMAP="ruwin_cplk-UTF-8"
 #
 # install the font from the terminus-font package (specify only the name)
 # /usr/share/consolefonts/ter-v14n.psf.gz
-FONT="ter-v14n"
+FONT="lat1-16 -m 8859-1"
 
 # End ${CONSOLE}
 EOF
