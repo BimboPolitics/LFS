@@ -1,14 +1,16 @@
 #! /bin/bash
 
-# устанавливаем утилиту 'removepkg' от пользователя root
+# install the 'removepkg' utility as root
 cp -v removepkg /mnt/lfs/sbin/
 chown root:root /mnt/lfs/sbin/removepkg
 chmod 744       /mnt/lfs/sbin/removepkg
 
 ###
-# Переходим в chroot окружение
-./entering-chroot-env.sh
+# Go to the chroot environment
+cp *.sh $LFS
+./entering-chroot-env.sh <<"EOT"
 ###
+chmod 744 *.sh
 main-directory-tree.sh
 kernel-headers.sh
 man-pages.sh
@@ -87,6 +89,6 @@ sysklogd.sh
 sysvinit.sh
 stripping.sh
 cleaning-up.sh
-
-
-# vim:ft=conf
+EOT
+rm $LFS/*.sh
+echo "stage 3 complete"

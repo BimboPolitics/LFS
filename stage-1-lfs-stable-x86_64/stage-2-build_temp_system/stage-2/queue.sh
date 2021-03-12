@@ -3,7 +3,7 @@
 ###
 # Run as user root
 ###
-
+#this copies all of the scripts to the LFS home system because thats where the scripts will look for them.
 cp *.sh $LFS
 
 
@@ -36,7 +36,11 @@ chmod 744 *.sh
 # Exit the chroot environment and run as user root
 ###
 EOT
+
+#cleaning up the scripts now we are donw with them.
+
 rm $LFS/*.sh
+
 ./mount-virtual-kernel-file-systems.sh --umount
 ./stripping.sh
 
