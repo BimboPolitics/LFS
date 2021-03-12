@@ -5,7 +5,7 @@ LFS system), and of course after editing the config
 
 # LFS bootable partition config begins
 image = /boot/vmlinuz-lfs
-  root = /dev/sda10
+  root = /dev/sdb
   label = LFS-stable
   read-only  # Partitions should be mounted read-only for checking
 # LFS bootable partition config ends

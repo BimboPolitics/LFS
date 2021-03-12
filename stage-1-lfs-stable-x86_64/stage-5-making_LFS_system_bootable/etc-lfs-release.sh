@@ -21,7 +21,7 @@ echo "${VERSION}" > "${TMP_DIR}/etc/lfs-release"
 cat << EOF > "${TMP_DIR}/etc/lsb-release"
 DISTRIB_ID="Linux From Scratch"
 DISTRIB_RELEASE="${VERSION}"
-DISTRIB_CODENAME="MyRequiem"
+DISTRIB_CODENAME="BimboPolitics"
 DISTRIB_DESCRIPTION="Linux From Scratch"
 EOF
 
@@ -30,7 +30,7 @@ NAME="Linux From Scratch"
 VERSION="${VERSION}"
 ID=lfs
 PRETTY_NAME="Linux From Scratch ${VERSION}"
-VERSION_CODENAME="MyRequiem"
+VERSION_CODENAME="BimboPolitics"
 EOF
 
 /bin/cp -vpR "${TMP_DIR}"/* /

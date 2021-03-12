@@ -1,8 +1,8 @@
 #! /bin/bash
 
 PRGNAME="etc-fstab"
-SWAP_PART="/dev/sda6"
-ROOT_PART="/dev/sda10"
+#SWAP_PART="/dev/sda6"
+ROOT_PART="/dev/sdb"
 
 ### /etc/fstab (partition mount settings)
 # /etc/fstab - файл в котором хранятся настройки монтирования различных
