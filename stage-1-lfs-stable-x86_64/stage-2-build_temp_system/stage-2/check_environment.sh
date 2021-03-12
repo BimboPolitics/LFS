@@ -5,7 +5,7 @@ if [[ "$(id -u)" != "0" ]]; then
     exit 1
 fi
 
-# мы в chroot окружении?
+# are we in a chroot environment?
 ID1="$(awk '$5=="/" {print $1}' < /proc/1/mountinfo)"
 ID2="$(awk '$5=="/" {print $1}' < /proc/$$/mountinfo)"
 if [[ "${ID1}" == "${ID2}" ]]; then

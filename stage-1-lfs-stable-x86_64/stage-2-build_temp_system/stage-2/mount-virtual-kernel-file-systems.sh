@@ -1,16 +1,16 @@
 #! /bin/bash
 
-# Для правильной работы chroot среды необходимо установить связь с работающим
-# ядром с помощью виртуальных файловых систем. Эти файловые системы являются
-# виртуальными, так как для них не используется дисковое пространство, а все их
-# содержимое находится в памяти:
-#    /dev       - каталог /dev хоста
+# For the chroot environment to work properly, you need to establish a connection with a running
+# the kernel using virtual filesystems. These filesystems are
+# virtual, since they do not use disk space, and all of them
+# the content is in memory:
+#    /dev       - catalog /dev host
 #    /dev/pts   - devpts
 #    /proc      - proc
 #    /run       - tmpfs
 #    /sys       - sysfs
 
-PART="/dev/sda10"
+PART="/dev/sdb"
 LFS="/mnt/lfs"
 
 if [[ "$(whoami)" != "root" ]]; then
@@ -45,39 +45,40 @@ mount "${PART}" "${LFS}" &>/dev/null
 
 ! [ -d "${LFS}/dev" ] && mkdir -pv "${LFS}"/{dev/pts,proc,run,sys}
 
-### Подготовка виртуальной файловой системы ядра
+### Preparing the kernel virtual filesystem
 # ----------------------------------------------
-# Когда ядро загружает систему, оно требует наличия нескольких узлов устройств,
-# в частности консоли /dev/console и устройства /dev/null. Узлы устройства
-# должны быть созданы на жестком диске, чтобы они были доступны до запуска
-# udevd и, кроме того, когда ядро запускается с параметром init=/bin/bash
+# When the kernel boots the system, it requires multiple device nodes,
+# in particular consoles / dev / console and devices / dev / null. Device nodes
+# must be created on your hard drive to be available prior to launch
+# udevd and also when the kernel is started with the option init=/bin/bash
 
-# если каталог ${LFS}/dev уже смонтирован, отмонтируем его
+# if the directory $ {LFS} / dev is already mounted, unmount it
 umount "${LFS}/dev/pts" &>/dev/null
 umount "${LFS}/dev"     &>/dev/null
 
-# создаем символьные устройства /dev/console и /dev/null, если не существуют
+
+# create character devices /dev/console and /dev/null if they don't exist
 ! [ -e "${LFS}/dev/console" ] && \
     mknod -m 600 "${LFS}/dev/console" c 5 1
 ! [ -e "${LFS}/dev/null" ] && \
     mknod -m 666 "${LFS}/dev/null"    c 1 3
 
-# рекомендуемый метод заполнения каталога /dev устройствами - это смонтировать
-# виртуальную файловую систему (например, tmpfs) в каталоге /dev и позволить
-# динамически создавать устройства в этой виртуальной файловой системе по мере
-# их обнаружения или доступа к ним. Создание устройства обычно выполняется во
-# время процесса загрузки Udev. Поскольку наша новая система еще не имеет Udev
-# и еще не загружена, необходимо смонтировать и заполнить /dev вручную. Это
-# достигается путем монтирования директории ${LFS}/dev с параметром --bind в
-# каталог /dev хост-системы. --bind - это особый тип монтирования, который
-# позволяет нам создать зеркало каталога или точку монтирования в каком-либо
-# другом месте, т.е. зеркало файловой системы /dev хоста в каталоге ${LFS}/dev
+# the recommended method for filling the /dev directory with devices is to mount
+# a virtual filesystem (like tmpfs) in the /dev directory and allow
+# dynamically create devices on this virtual filesystem as
+# discovering or accessing them. Device creation is usually done during
+# time of the Udev boot process. Since our new system does not yet have Udev
+# and not loaded yet, you need to mount and populate /dev manually. it
+# achieved by mounting the ${LFS}/dev directory with the --bind option in
+# the / dev directory of the host system. --bind is a special type of mount that
+# allows us to create a mirror of a directory or mount point in some
+# elsewhere, i.e. mirror of the host's /dev filesystem in the directory ${LFS}/dev
 mount --bind /dev "${LFS}/dev" &>/dev/null
 
-### Монтирование виртуальной файловой системы ядра
+### Mounting the kernel virtual filesystem
 # ------------------------------------------------
-# Устройства в /dev/pts - это устройства псевдотерминалов (pty). Монтируем
-# /dev/pts хоста в /mnt/lfs/dev/pts
+# Devices in /dev/pts - these are pseudo-terminal devices (pty). We mount
+# /dev/pts host in /mnt/lfs/dev/pts
 mount --bind /dev/pts "${LFS}/dev/pts" &>/dev/null
 
 # proc, run, sys
@@ -93,8 +94,9 @@ if ! mount | /bin/grep -q "${LFS}/sys"; then
     mount -t sysfs sysfs "${LFS}/sys"  &>/dev/null
 fi
 
-# в некоторых хост-системах /dev/shm является символической ссылкой на
-# /run/shm, поэтому в таком случае необходимо создать каталог /run/shm
+
+# on some host systems / dev / shm is a symbolic link to
+# /run/shm, so in this case you need to create a directory /run/shm
 if [ -h "${LFS}/dev/shm" ]; then
     mkdir -pv "${LFS}/$(readlink ${LFS}/dev/shm)"
 fi

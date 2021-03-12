@@ -1,6 +1,6 @@
 #! /bin/bash
 
-# вход в среду chroot
+# enter the chroot environment
 
 LFS="/mnt/lfs"
 
@@ -19,7 +19,8 @@ RED="\[\033[1;31m\]"
 MAGENTA="\[\033[1;35m\]"
 RESETCOLOR="\[\033[0;0m\]"
 
-# опция -i для команды env удалит все переменные среды кроме установленных явно
+
+# the -i option to env command will remove all environment variables except those set explicitly
 chroot "${LFS}" /usr/bin/env -i                                           \
     HOME="/root"                                                          \
     TERM="${TERM}"                                                        \
@@ -27,11 +28,12 @@ chroot "${LFS}" /usr/bin/env -i                                           \
     PS1="\u ${MAGENTA}[LFS chroot]${RESETCOLOR}:${RED}\w\$${RESETCOLOR} " \
     /bin/bash --login +h
 
-# с этого момента больше нет необходимости использовать переменную ${LFS},
-# потому что вся работа будет ограничена файловой системой LFS, т.е. ${LFS}
-# будет являться корнем файловой системы
+# from now on it is no longer necessary to use the $ {LFS} variable,
+# because all work will be limited to the LFS file system, i.e. $ {LFS}
+# will be the root of the filesystem
+
 
 ### NOTE:
-# Во время первого входа в среду в приглашении вместо имени пользователя bash
-# скажет "I have no name!". Это нормально, потому что файл /etc/passwd еще не
-# создан.
+# On first login to lfs at prompt instead of bash username
+# will say "I have no name!". This is ok because the /etc/passwd file is not yet
+# created.
