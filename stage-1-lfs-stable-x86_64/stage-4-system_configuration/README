@@ -1,26 +1,26 @@
-Загрузка системы Linux
+System load Linux
 ----------------------
-Включает в себя несколько этапов. Процесс должен смонтировать обе файловые
-системы: виртуальные и реальные, инициализировать устройства, активировать файл
-подкачки, проверить основные файлы системы на целостность, смонтировать любые
-разделы, в том числе и раздел подкачки, настроить системные часы, поднять
-сеть, запустить демоны, требуемые системой, и выполнить любые другие
-пользовательские задачи, необходимые для пользователя. Этот процесс должен быть
-организованы так, чтобы обеспечить выполнение задач в правильном порядке, но в
-то же время выполнять все это как можно быстрее.
+It includes several stages. The process must mount both file
+systems: virtual and real, initialize devices, activate file
+swap, check the main system files for integrity, mount any
+partitions, including the swap partition, set the system clock, raise
+network, start the daemons required by the system, and execute any other
+custom tasks required by the user. This process should be
+are organized to ensure that tasks are performed in the correct order, but
+at the same time, do all this as quickly as possible.
 
 System V
 --------
-System V - это классический способ загрузки, который использовался в Unix и
-Unix-подобных системах, таких как Linux, примерно с 1983 года. Он состоит из
-небольшой программы init, которая запускает основные программы, такие как
-login (через getty) и скрипты. Эти скрипты, обычно называемые rc-скриптами,
-контролируют выполнение набора дополнительных скриптов, которые выполняют
-задачи, необходимые для инициализации системы.
+System V - this is the classic boot method used on Unix and
+Unix-like systems like Linux have been around since 1983. It consists of
+a small init program that launches basic programs like
+login (via getty) and scripts. These scripts, commonly referred to as rc scripts,
+control the execution of a set of additional scripts that execute
+tasks required to initialize the system.
 
-Программа init контролируется файлом /etc/inittab и организована в уровни
-запуска, которые могут быть выполнены пользователем. Уровень запуска по
-умолчанию обычно 3 или 5
+The init program is controlled by the / etc / inittab file and is organized into levels
+launches that can be performed by the user. Start level by
+the default is usually 3 or 5
    0 -  halt
    1 -  single user mode
    2 -  multiuser, without networking
@@ -29,37 +29,37 @@ login (через getty) и скрипты. Эти скрипты, обычно 
    5 -  full multiuser mode with display manager
    6 -  reboot
 
-Преимущества:
-    - система проста в понимании
-    - простота настройки
+Benefits:
+    - the system is easy to understand
+    - easy to customize
 
-Недостатки
-   - медленная загрузка. Среднее время для LFS ~8-12 секунд (время загрузки
-      измеряется от первого сообщения ядра до приглашения оболочки для входа
-      пользователя)
-   - последовательная обработка загрузочных задач. Задержка в любом процессе,
-      таком как проверка файловой системы, задержит весь процесс загрузки
-   - не поддерживает расширенные функции, такие как контрольные группы
+disadvantages
+   - slow loading. Average time for LFS ~ 8-12 seconds (load time
+      measured from first kernel message to shell login prompt
+      user)
+   - sequential processing of boot tasks. Delay in any process
+      such as checking the filesystem will delay the entire boot process
+   - does not support advanced features such as cgroups
       (cgroups)
-   - добавление сценариев требует "ручного" решения о последовательности их
-      запуска
+   - adding scripts requires a "manual" decision about their sequence
+      launch
 
 ###
-# Порядок сборки пакетов происходит в порядке СТРОГО соответствующем списку в
-# файле ./queue
+# The order of assembly of packages is in the order STRICTLY corresponding to the list in
+# file ./queue
 ###
 
-- копируем вспомогательные скрипты для сборки в корень LFS системы (/mnt/lfs)
+- copy the auxiliary scripts for building to the root of the LFS system (/mnt/lfs)
     ./check_environment.sh
     ./unpack_source_archive.sh
     ./write_to_var_log_packages.sh
 
-- копируем сборочный скрипт <pkg_name.sh> в корень LFS системы (/mnt/lfs/)
+- copy the assembly script <pkg_name.sh> to the root of the LFS system (/mnt/lfs/)
 
-- переходим в chroot окружение
+- go to the chroot environment
     # ./entering-chroot-env.sh
 
-- запускаем сборочный скрипт
+- run the build script
     # /pkg_name.sh
 
 # vim:ft=conf

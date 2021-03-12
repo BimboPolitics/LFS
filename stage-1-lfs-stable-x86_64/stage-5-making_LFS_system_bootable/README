@@ -1,41 +1,41 @@
-В этой заключительной части сделаем LFS систему загрузочной: создадим
-/etc/fstab, соберем ядро и модули, настроим загрузчик GRUB или LILO. После
-сборки и настройки всех пакетов в этой директории базовая система LFS будет
-полностью собрана. Директорию /mnt/lfs/sources можно удалить и после
-перезагрузки войти в "живую" систему.
+In this final part, we will make the LFS system bootable: create
+/ etc / fstab, build the kernel and modules, configure the GRUB or LILO boot loader. After
+building and configuring all packages in this directory, the base LFS system will
+fully assembled. The / mnt / lfs / sources directory can be removed after
+reboot to enter the "live" system.
 
 ###
-# ВАЖНО !!!
+# IMPORTANT !!!
 ###
-# Открываем скрипт etc-fstab.sh и проверяем переменные
-#    SWAP_PART  - указывает на swap раздел жесткого диска или на swap-файл
-#    ROOT_PART  - корневой раздел LFS системы
+# Open the etc-fstab.sh script and check the variables
+# SWAP_PART - points to a swap partition of a hard disk or to a swap file
+# ROOT_PART - LFS system root partition
 
 ###
-# Если в хост-системе /boot находится на отдельном разделе, то ядро LFS системы
-# должно быть установлено именно туда. Самый простой способ сделать это -
-# смонтировать /boot хоста в каталог /boot LFS-системы
-mount -v --bind /boot /mnt/lfs/boot
+# If / boot is on a separate partition on the host system, then the LFS kernel of the system
+# should be set there. The easiest way to do this is
+# mount / boot host to / boot directory of LFS system
+mount -v --bind / boot / mnt / lfs / boot
 ###
 
 ###
-# Порядок сборки пакетов происходит в порядке СТРОГО соответствующем списку в
-# файле ./queue
+# The order of assembly of packages is in the order STRICTLY corresponding to the list in
+# file ./queue
 ###
 
-- копируем вспомогательные скрипты для сборки и конфиг ядра в корень LFS
-  системы (/mnt/lfs)
+- copy the auxiliary scripts for building and the kernel config to the LFS root
+  systems (/mnt/lfs)
     ./check_environment.sh
     ./config_file_processing.sh
     ./write_to_var_log_packages.sh
     ./lfs-kernel-config-x.x.x
 
-- копируем сборочный скрипт <pkg_name.sh> в корень LFS системы (/mnt/lfs/)
+- copy the assembly script <pkg_name.sh> to the root of the LFS system (/mnt/lfs/)
 
-- переходим в chroot окружение
+- go to the chroot environment
     # ./entering-chroot-env.sh
 
-- запускаем сборочный скрипт
+- run the build script
     # /pkg_name.sh
 
 

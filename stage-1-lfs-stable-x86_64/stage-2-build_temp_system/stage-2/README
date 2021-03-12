@@ -1,22 +1,22 @@
-На данный момент все циклические зависимости устранены, и поэтому мы можем
-использовать среду 'chroot', полностью изолировав операционную систему хоста за
-исключением работающего ядра. Именно в chroot мы будем собирать последние части
-нашей временной системы:
-    - недостающие  инструменты, необходимые для сборки пакетов
-    - три пакета, необходимые для запуска тестов
+At the moment, all cyclical dependencies have been eliminated, and therefore we can
+use the 'chroot' environment, completely isolating the host operating system behind
+excluding a running kernel. It is in the chroot that we will collect the last parts
+of our system:
+    - missing tools needed to build packages
+    - three packages required to run tests
 
 ###
-# Все пакеты собираются в порядке СТРОГО соответствующем списку в файле./queue
+# All packages are collected in the order STRICTLY corresponding to the list in the file ./queue
 ###
 
-Для сборки пакета в среде chroot:
-    1) копируем в /mnt/lfs/
+To build a package in the environment chroot:
+    1) copy to /mnt/lfs/
         - check_environment.sh
         - unpack_source_archive.sh
         - <pkg_name>.sh
-    2) заходим в chroot окружение
+    2) go to the chroot environment
         # entering-chroot-env.sh
-    3) запускаем сборочный скрипт для пакета
+    3) run the build script for the package
         # /<pkg_name>.sh
 
 # vim:ft=conf

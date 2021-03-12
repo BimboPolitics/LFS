@@ -1,28 +1,28 @@
-Сборка базовой системы linux
+Building the base system linux
 ----------------------------
-На данном этапе = НЕ = рекомендуется использовать любые опции оптимизации
-компилятора, если иное не указано в сборочном скрипте. Даже если пакет удачно
-компилируется при использовании оптимизации, существует риск, что он будет
-скомпилирован неправильно из-за сложных взаимодействий между кодом и
-инструментами сборки.
+At this stage it is *not* recommended to use any optimization options in the
+compiler, unless otherwise specified in the build script. Even if the package is successful
+compiling when using optimization, there is a risk that it will
+not compiled correctly due to complex interactions between the code and
+assembly tools.
 
 ###
-# Порядок сборки пакетов происходит в порядке СТРОГО соответствующем списку в
-# файле ./queue
+# The order of assembly of packages occurs in the order STRICTLY corresponding to the list in
+# file ./queue
 ###
 
-- копируем вспомогательные скрипты для сборки в корень LFS системы (/mnt/lfs)
+- copy the auxiliary scripts for building to the root of the LFS system (/mnt/lfs)
     ./check_environment.sh
     ./config_file_processing.sh
     ./unpack_source_archive.sh
     ./write_to_var_log_packages.sh
 
-- копируем сборочный скрипт <pkg_name.sh> в корень LFS системы (/mnt/lfs/)
+- copy the build script <pkg_name.sh> to the root of the LFS system (/mnt/lfs/)
 
-- переходим в chroot окружение
+- go to the chroot environment
     # ./entering-chroot-env.sh
 
-- запускаем сборочный скрипт
+- run the build script
     # /pkg_name.sh
 
 # vim:ft=conf

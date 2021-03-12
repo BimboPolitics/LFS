@@ -1,5 +1,5 @@
 ###***###
-# Пакет .......................... Зависимые пакеты
+#Package .......................... Dependent packages
 ###***###
 perl                                xml-parser, vim
 kernel-generic                      iptables

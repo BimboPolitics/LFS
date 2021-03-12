@@ -1,24 +1,24 @@
-Создание временной области, которая содержит основной набор инструментов,
-изолированный от хост-системы.
+Create a temporary area that contains the main toolbox,
+isolated from host system.
 
-Для начала нужно узнать название рабочей платформы, которое часто называют
-целевой триплет. Простой способ определить имя целевого триплета - запустить
-скрипт config.guess, который поставляется с исходным кодом для многих пакетов.
-Например, распакуем исходный код binutils и запустим скрипт config.guess:
+First you need to find out the name of the working platform, which is often called
+target triplet. An easy way to determine the name of the target triplet is to run
+the config.guess script that comes with the source code for many packages.
+For example, unpack the binutils source code and run the script config.guess:
 
     # ./config.guess
     x86_64-pc-linux-gnu
 
-Также следует знать имя динамического компоновщика платформы, часто называемого
-динамическим загрузчиком (не путать со стандартным компоновщиком ld, который
-является частью binutils). Динамический компоновщик, предоставляемый Glibc,
-находит и загружает общие библиотеки, необходимые программе, подготавливает
-программу к запуску и затем запускает ее. Имя динамического компоновщика
-можно определить проверив любой двоичный файл из хост-системы:
+You should also know the name of the dynamic platform linker, often called
+dynamic loader (not to be confused with the standard ld linker, which
+is part of binutils). The dynamic linker provided by Glibc is
+finds and loads the shared libraries needed by the program, prepares
+program to run and then runs it. Dynamic linker name
+can be determined by checking any binary from the host system:
 
     # readelf -l /bin/ls  | /bin/grep interpreter
     [Requesting program interpreter: /lib64/ld-linux-x86-64.so.2]
 
-    Видим, что имя динамического компоновщика ld-linux-x86-64.so.2
+    We see that the name of the dynamic linker is ld-linux-x86-64.so.2
 
 # vim:ft=conf

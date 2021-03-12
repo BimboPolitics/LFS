@@ -1,27 +1,28 @@
-1) Проверяем host-систему на наличие всех нужных компонентов для сборки LFS
-   системы:
+1)Checking the host system for all the necessary components for building LFS
+   systems:
     # ./check-host-system-requirements.sh
 
-2) Подготавливаем раздел жесткого диска на котором будем собирать LFS систему:
-    - форматирование
-    - создание файловой системы ext4
-    - монтирование
-    - создание минимального набора каталогов:
+2) Preparing the hard disk partition on which we will assemble the LFS system:
+    - formatting
+    - file system creation ext4
+    - mounting
+    - creating a minimal set of directories:
         /mnt/lfs/{bin,etc,lib,lib64,sbin,sources,tools,usr,var}
 
-    ### Важно ###
-    В скрипте partitions-init.sh устанавливаем переменную PART (раздел для
-    сборки LFS системы, по умолчанию "/dev/sda10"). Монтироваться раздел будет
-    в /mnt/lfs
+    ### Important ###
+    
+In the partitions-init.sh script, set the variable PART (section for
+    LFS system builds, by default "/dev/sda10"). The section will be mounted
+    in /mnt/lfs
 
     # ./partitions-init.sh
 
-3) Создание группы и пользователя lfs, под которым будем собирать временные
-   инструменты для сборки LFS системы, а так же настройка рабочего окружения
-   для этого пользователя (~/.bash_profile, ~/.bashrc)
+3) Creating an lfs group and user, under which we will collect temporary
+   tools for building an LFS system, as well as setting up a working environment
+   for this user (~/.bash_profile, ~/.bashrc)
     # ./create-lfs-user.sh
 
-4) Скачиваем все нужные исходники и патчи для сборки в /mnt/lfs/sources
+4) We download all the necessary sources and patches for building in /mnt/lfs/sources
     # ./download-src.sh
 
 # vim:ft=conf
