@@ -16,16 +16,17 @@
 ###
 # Переходим в chroot окружение
 cp *.sh $LFS
+cp lfs-kernel-config-5.10.17 $LFS
 ./entering-chroot-env.sh <<"EOT"
 ###
 ./etc-fstab.sh
 ./etc-lfs-release.sh
 ./kernel-source.sh
-./kernel-generic.sh 4.15.0
-./kernel-modules.sh 4.15.0
+./kernel-generic.sh 5.10.17
+./kernel-modules.sh 5.10.17
 
 EOT
 rm $LFS/*.sh
-
+rm $LFS/lfs-kernel-config-5.10.17
 echo "stage 5 complete"
 
