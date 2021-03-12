@@ -9,12 +9,12 @@ check-compiling-and-linking.sh
 libstdc++-pass-1.sh
 
 ###
-# Кросс-компиляция временных инструментов
+# Cross-compiling temporary tools
 ###
-# Следующие утилиты устанавливаются на свое окончательное место, но пока не
-# могут быть использованы, т.к. при их компоновке будут использоваться уже
-# установленные в LFS систему новые библиотеки и собранные программы будут
-# находить их в дальнейшем только в среде chroot
+# The following utilities are installed in their final location, but not yet
+# can be used because at their arrangement will be used already
+# new libraries and compiled programs installed on the LFS system will be
+# find them later only in the chroot environment
 ###
 m4.sh
 ncurses.sh
