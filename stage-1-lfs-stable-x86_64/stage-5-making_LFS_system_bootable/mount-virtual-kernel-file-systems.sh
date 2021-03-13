@@ -1,1 +1,0 @@
-../stage-2-build_temp_system/stage-2/mount-virtual-kernel-file-systems.sh
