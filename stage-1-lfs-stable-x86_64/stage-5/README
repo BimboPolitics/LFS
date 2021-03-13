@@ -15,7 +15,7 @@ reboot to enter the "live" system.
 # If / boot is on a separate partition on the host system, then the LFS kernel of the system
 # should be set there. The easiest way to do this is
 # mount / boot host to / boot directory of LFS system
-mount -v --bind / boot / mnt / lfs / boot
+mount -v --bind /boot /mnt/lfs/boot
 ###
 
 ###

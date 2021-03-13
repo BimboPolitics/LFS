@@ -2,7 +2,7 @@
 
 PRGNAME="etc-fstab"
 #SWAP_PART="/dev/sda6"
-ROOT_PART="/dev/sdb"
+ROOT_PART="/dev/sdb2"
 
 ### /etc/fstab (partition mount settings)
 # /etc/fstab - файл в котором хранятся настройки монтирования различных
@@ -22,7 +22,7 @@ cat << EOF > "${TMP_DIR}${FSTAB}"
 # File System    mount-point    type        options             dump fsck order
 # ------------------------------------------------------------------------------
 
-${ROOT_PART}       /              ext4        defaults            1       1
+${ROOT_PART}     /              ext4        defaults            1       1
 proc             /proc          proc        nosuid,noexec,nodev 0       0
 sysfs            /sys           sysfs       nosuid,noexec,nodev 0       0
 devpts           /dev/pts       devpts      gid=5,mode=620      0       0

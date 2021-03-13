@@ -10,7 +10,7 @@
 #    /run       - tmpfs
 #    /sys       - sysfs
 
-PART="/dev/sdb"
+PART="/dev/sdb2"
 LFS="/mnt/lfs"
 
 if [[ "$(whoami)" != "root" ]]; then
