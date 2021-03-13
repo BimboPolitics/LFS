@@ -8,11 +8,13 @@ chmod 744       /mnt/lfs/sbin/removepkg
 ###
 # Go to the chroot environment
 cp *.sh $LFS
+
 ./mount-virtual-kernel-file-systems.sh
+#hopefully this fixes the build issue
+echo 'export PATH=/bin:/usr/bin:/sbin:/usr/sbin' >>/mnt/lfs/root/.bash_profile
 ./entering-chroot-env.sh <<"EOT"
 ###
-echo export PATH=/bin:/usr/bin:/sbin:/usr/sbin
-./chmod 744 *.sh
+chmod 744 *.sh
 ./main-directory-tree.sh
 ./kernel-headers.sh
 ./man-pages.sh
