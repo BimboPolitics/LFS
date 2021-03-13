@@ -20,9 +20,9 @@ MAGENTA="\[\033[1;35m\]"
 RESETCOLOR="\[\033[0;0m\]"
 
 # опция -i для команды env удалит все переменные среды кроме установленных явно
-chroot "${LFS}" /usr/bin/env -i                                           \
-    HOME="/root"                                                          \
-    TERM="${TERM}"                                                        \
-    PATH=/bin:/usr/bin:/sbin:/usr/sbin                                    \
-    PS1="\u ${MAGENTA}[LFS chroot]${RESETCOLOR}:${RED}\w\$${RESETCOLOR} " \
-    /bin/bash --login
+chroot "$LFS" /usr/bin/env -i   \
+    HOME=/root                  \
+    TERM="$TERM"                \
+    PS1='(lfs chroot) \u:\w\$ ' \
+    PATH=/bin:/usr/bin:/sbin:/usr/sbin \
+    /bin/bash --login +h

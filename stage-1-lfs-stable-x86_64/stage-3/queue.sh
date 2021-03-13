@@ -11,7 +11,7 @@ cp *.sh $LFS
 ./mount-virtual-kernel-file-systems.sh
 ./entering-chroot-env.sh <<"EOT"
 ###
-export PATH=/bin:/usr/bin:/sbin:/usr/sbin
+echo export PATH=/bin:/usr/bin:/sbin:/usr/sbin
 ./chmod 744 *.sh
 ./main-directory-tree.sh
 ./kernel-headers.sh

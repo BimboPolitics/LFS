@@ -16,7 +16,9 @@ if ! mount | /bin/grep -q "${LFS}/proc"; then
 fi
 
 # $PATH и $PS1 при входе в среду chroot теперь читаются из /etc/profile
-chroot "${LFS}" /usr/bin/env -i \
-    HOME="/root"                \
-    TERM="${TERM}"              \
-    /bin/bash --login
+chroot "$LFS" /usr/bin/env -i   \
+    HOME=/root                  \
+    TERM="$TERM"                \
+    PS1='(lfs chroot) \u:\w\$ ' \
+    PATH=/bin:/usr/bin:/sbin:/usr/sbin \
+    /bin/bash --login +h

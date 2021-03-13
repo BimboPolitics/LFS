@@ -21,11 +21,11 @@ RESETCOLOR="\[\033[0;0m\]"
 
 
 # the -i option to env command will remove all environment variables except those set explicitly
-chroot "${LFS}" /usr/bin/env -i                                           \
-    HOME="/root"                                                          \
-    TERM="${TERM}"                                                        \
-    PATH=/bin:/usr/bin:/sbin:/usr/sbin                                    \
-    PS1="\u ${MAGENTA}[LFS chroot]${RESETCOLOR}:${RED}\w\$${RESETCOLOR} " \
+chroot "$LFS" /usr/bin/env -i   \
+    HOME=/root                  \
+    TERM="$TERM"                \
+    PS1='(lfs chroot) \u:\w\$ ' \
+    PATH=/bin:/usr/bin:/sbin:/usr/sbin \
     /bin/bash --login +h
 
 # from now on it is no longer necessary to use the $ {LFS} variable,
