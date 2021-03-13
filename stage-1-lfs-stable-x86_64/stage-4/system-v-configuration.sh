@@ -176,26 +176,9 @@ EOF
 CONSOLE="/etc/sysconfig/console"
 cat << EOF > "${TMP_DIR}${CONSOLE}"
 # Begin ${CONSOLE}
-
 UNICODE="1"
-
-### layout
-# /usr/share/keymaps/i386/qwerty/ruwin_cplk-UTF-8.map.gz
 KEYMAP="us"
-
-### font
-# fonts testing in the console
-#    $ setfont /path/to/font.ext.gz
-#    for example:
-#    $ setfont -v /usr/share/consolefonts/ter-v14n.psf.gz
-#
-# display all characters (glyphs) of the current font
-#    $ showconsolefont
-#
-# install the font from the terminus-font package (specify only the name)
-# /usr/share/consolefonts/ter-v14n.psf.gz
 FONT="lat1-16 -m 8859-1"
-
 # End ${CONSOLE}
 EOF
 

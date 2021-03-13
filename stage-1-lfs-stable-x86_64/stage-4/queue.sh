@@ -7,7 +7,7 @@ cp *.sh $LFS
 ###
 ./lfs-bootscripts.sh
 ./network-configuration.sh
-./terminus-font.sh
+## ./terminus-font.sh
 ./system-v-configuration.sh
 ./etc-profile.sh
 ./etc-inputrc.sh
