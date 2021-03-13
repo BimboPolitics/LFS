@@ -21,7 +21,7 @@ cat << EOF > "${TMP_DIR}${FSTAB}"
 
 # File System    mount-point    type        options             dump fsck order
 # ------------------------------------------------------------------------------
-${SWAP_PART}        swap           swap        defaults            0       0
+
 ${ROOT_PART}       /              ext4        defaults            1       1
 proc             /proc          proc        nosuid,noexec,nodev 0       0
 sysfs            /sys           sysfs       nosuid,noexec,nodev 0       0
