@@ -9,6 +9,9 @@ of our system:
 # All packages are collected in the order STRICTLY corresponding to the list in the file ./queue
 ###
 
+IMPORTANT NOTE
+queue.sh is complete for this stage. Use it.
+
 To build a package in the environment chroot:
     1) copy to /mnt/lfs/
         - check_environment.sh

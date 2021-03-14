@@ -4,6 +4,10 @@
 # point to a partition of a disk mounted in /mnt/lfs
 ###
 
+IMPORTANT NOTE
+
+queue.sh is complete for this stage. Use it.
+
 We will collect temporary instruments under the user lfs. For this:
     - copy this directory to /home/lfs/
     - change owner

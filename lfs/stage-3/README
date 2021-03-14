@@ -11,6 +11,11 @@ assembly tools.
 # file ./queue
 ###
 
+
+IMPORTANT NOTE.
+
+Do not run ./queue.sh its not ready yet. You will have to run each script in the queue order manually.
+
 - copy the auxiliary scripts for building to the root of the LFS system (/mnt/lfs)
     ./check_environment.sh
     ./config_file_processing.sh
