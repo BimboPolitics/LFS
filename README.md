@@ -36,7 +36,8 @@ Stage 2.2: Run queue.sh as the *root* user. This portion of the toolchain buildi
 Stage 3: **Stage 3 automation is not complete do not run queue.sh it will leave out packages**
 
 From the stage 3 folder as the root user run 
-`cp -v removepkg /mnt/lfs/sbin/
+```
+cp -v removepkg /mnt/lfs/sbin/
 chown root:root /mnt/lfs/sbin/removepkg
 chmod 744       /mnt/lfs/sbin/removepkg
 
@@ -46,7 +47,8 @@ cp *.sh $LFS
 
 ./entering-chroot-env.sh
 
-chmod 744 *.sh`
+chmod 744 *.sh
+```
 
 Then change directory back to /sources/LFS/lfs/stage-3
 
@@ -80,8 +82,8 @@ When you install grub itself as shown in the LFS book via grub-install it tells 
 This is wrong and will break your grub for the host machine. Point it to /dev/sdb *while you are chrooted into the LFS system*
 
 You do not need to specify sdb1 or 2 and it will break things if you try to specify it. Dont do that. Just use /dev/sdb 
-
-`cat > /boot/grub/grub.cfg << "EOF"
+```
+cat > /boot/grub/grub.cfg << "EOF"
 # Begin /boot/grub/grub.cfg
 set default=0
 set timeout=5
@@ -93,7 +95,8 @@ set root=(hd0,gpt2)
 menuentry "GNU/Linux, vmlinuz-lfs-5.10.17" {
         linux   vmlinuz-lfs-5.10.17 root=/dev/sda2 init=/sbin/init ro
 }
-EOF`
+EOF
+```
 
 We change it here to /dev/sda2 because thats what it will be when we boot up that drive in its own virtual machine.
 
