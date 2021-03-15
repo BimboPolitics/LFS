@@ -98,7 +98,6 @@ cat << EOF > "${HOSTS}"
 # IP-address        Full domain name            Alias
 # ----------        ----------------            -----
 127.0.0.1           localhost
-127.0.0.1           lfs.myrequiem.net           lfs
 
 # End ${HOSTS}
 EOF

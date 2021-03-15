@@ -1,0 +1,13 @@
+cat > /boot/grub/grub.cfg << "EOF"
+# Begin /boot/grub/grub.cfg
+set default=0
+set timeout=5
+
+insmod part_gpt
+insmod ext2
+set root=(hd0,gpt2)
+
+menuentry "GNU/Linux, vmlinuz-lfs-5.10.17" {
+        linux   vmlinuz-lfs-5.10.17 root=/dev/sda2 init=/sbin/init ro
+}
+EOF
