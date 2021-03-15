@@ -27,7 +27,7 @@ In your settings -> storage of the host machine it gives you the option to creat
 
 Prep: Mount your LFS drive as per the book. Then as the root user change directory to the sources folder and git clone this repository into it.
 
-chown lfs:lfs -R $LFS/sources/LFS/lfs/stage-2/stage-2.1
+`chown lfs:lfs -R $LFS/sources/LFS/lfs/stage-2/stage-2.1`
 
 Stage 2.1: Run queue.sh as the **lfs** user. This portion of the toolchain building has been fully automated. Enjoy.
 
@@ -36,7 +36,7 @@ Stage 2.2: Run queue.sh as the *root* user. This portion of the toolchain buildi
 Stage 3: **Stage 3 automation is not complete do not run queue.sh it will leave out packages**
 
 From the stage 3 folder as the root user run 
-cp -v removepkg /mnt/lfs/sbin/
+`cp -v removepkg /mnt/lfs/sbin/
 chown root:root /mnt/lfs/sbin/removepkg
 chmod 744       /mnt/lfs/sbin/removepkg
 
@@ -46,7 +46,7 @@ cp *.sh $LFS
 
 ./entering-chroot-env.sh
 
-chmod 744 *.sh
+chmod 744 *.sh`
 
 Then change directory back to /sources/LFS/lfs/stage-3
 
@@ -81,7 +81,7 @@ This is wrong and will break your grub for the host machine. Point it to /dev/sd
 
 You do not need to specify sdb1 or 2 and it will break things if you try to specify it. Dont do that. Just use /dev/sdb 
 
-cat > /boot/grub/grub.cfg << "EOF"
+`cat > /boot/grub/grub.cfg << "EOF"
 # Begin /boot/grub/grub.cfg
 set default=0
 set timeout=5
@@ -93,7 +93,7 @@ set root=(hd0,gpt2)
 menuentry "GNU/Linux, vmlinuz-lfs-5.10.17" {
         linux   vmlinuz-lfs-5.10.17 root=/dev/sda2 init=/sbin/init ro
 }
-EOF
+EOF`
 
 We change it here to /dev/sda2 because thats what it will be when we boot up that drive in its own virtual machine.
 
