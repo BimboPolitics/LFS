@@ -104,3 +104,4 @@ Included in my version of the LFS build scripts is a kernel configuration that i
 
 After this exit the chroot unmount any drives and shut down the host system then boot into the second virtual machine using the LFS hard drive.
 
+The BLFS scripts *are not ready yet* so please do not use them yet.
