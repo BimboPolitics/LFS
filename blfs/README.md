@@ -7,3 +7,5 @@ After installing QT and following the instructions for setup run "source /etc/pr
 When installing Aspell it tells you to install a dictionary. US english speakers want this one. https://ftp.gnu.org/gnu/aspell/dict/en/aspell6-en-2020.12.07-0.tar.bz2
 
 Untar it, cd into it then follow the install instructions in the book.
+
+After fully installing KDE plasma 5 i had to hit ctrl+shift+f2 for the desktop to show. The fulk install time was around 4 days for compiling all dependencies. 
