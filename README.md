@@ -95,8 +95,23 @@ set root=(hd0,gpt2)
 menuentry "GNU/Linux, vmlinuz-lfs-5.10.17" {
         linux   vmlinuz-lfs-5.10.17 root=/dev/sda2 init=/sbin/init ro
 }
+
+insmod part_gpt
+insmod ext2
+set root=(hd0,gpt2)
+
+menuentry "GNU/Linux, vmlinuz-5.10.17-kde" {
+        linux   /boot/vmlinuz-5.10.17-kde root=/dev/sda2 init=/sbin/init ro
+                initrd /boot/initrd.img-5.10.17
+
+}
+
 EOF
 ```
+
+The first menu entry is for the default LFS no intramfs build instructions. 
+
+The second one is for using intramfs later when installing KDE plasma. Recompile using the KDE kernel config. Just be sure you name your vmlinuz properly with this second kernel compile.
 
 We change it here to /dev/sda2 because thats what it will be when we boot up that drive in its own virtual machine.
 
