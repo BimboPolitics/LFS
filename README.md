@@ -103,9 +103,9 @@ insmod part_gpt
 insmod ext2
 set root=(hd0,gpt2)
 
-menuentry "GNU/Linux, vmlinuz-5.10.17-kde" {
-        linux   /boot/vmlinuz-5.10.17-kde root=/dev/sda2 init=/sbin/init ro
-                initrd /boot/initrd.img-5.10.17
+menuentry "GNU/Linux, vmlinuz-5.11.6-kde" {
+        linux   /boot/vmlinuz-5.11.6-kde root=/dev/sda2 init=/sbin/init ro
+                initrd /boot/initrd.img-5.11.6
 
 }
 
