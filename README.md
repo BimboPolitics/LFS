@@ -4,9 +4,12 @@ Based on:<br>
 * [Beyond Linux® From Scratch (System V Edition)][2]<br><br>
 Translated from Russian using google translate.
 
-[1]: http://www.linuxfromscratch.org/lfs/view/stable/index.html
-[2]: http://www.linuxfromscratch.org/blfs/view/stable/index.html
+[1]: http://www.linuxfromscratch.org/lfs/view/systemd/index.html
+[2]: http://www.linuxfromscratch.org/blfs/view/systemd/index.html
 
+
+
+Reference: We want to use systemd not systemv http://www.linuxfromscratch.org/lfs/view/systemd/index.html
 
 General guide to using these build scripts.
 
@@ -52,7 +55,7 @@ chmod 744 *.sh
 
 Then change directory back to /sources/LFS/lfs/stage-3
 
-Run each build script in the order they are listed in queue.sh 
+Run each build script in the order they are listed in queue.sh except for the systemv script. Follow the systemd install instructions. 
 
 It will be helpful if you have this open in a text editor somewhere so you have that list.
 
