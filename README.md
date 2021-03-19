@@ -95,8 +95,8 @@ insmod part_gpt
 insmod ext2
 set root=(hd0,gpt2)
 
-menuentry "GNU/Linux, vmlinuz-lfs-5.10.17" {
-        linux   vmlinuz-lfs-5.10.17 root=/dev/sda2 init=/sbin/init ro
+menuentry "GNU/Linux, vmlinuz-lfs-5.11.6" {
+        linux   vmlinuz-lfs-5.11.6 root=/dev/sda2 init=/sbin/init ro
 }
 
 insmod part_gpt
