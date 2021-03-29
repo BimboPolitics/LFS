@@ -1,4 +1,4 @@
-#! /bin/bash
+! /bin/bash
 
 PRGNAME="binutils"
 
@@ -33,3 +33,4 @@ cd build || exit 1
 
 make || make -j1 || exit 1
 make install DESTDIR="${LFS}"
+install -vm755 libctf/.libs/libctf.so.0.0.0 "${LFS}"/usr/lib
