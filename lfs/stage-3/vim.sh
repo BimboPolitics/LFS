@@ -11,8 +11,8 @@ source "${ROOT}check_environment.sh" || exit 1
 SOURCES="/sources"
 VERSION=$(echo "${SOURCES}/${PRGNAME}"-*.tar.?z* | rev | \
     cut -f 3- -d . | cut -f 1 -d - | rev)
-MAJ_VER="$(echo "${VERSION}" | cut -d . -f 1)"
-MIN_VER="$(echo "${VERSION}" | cut -d . -f 2)"
+MAJ_VER=8
+MIN_VER=2.2433
 BUILD_DIR="${SOURCES}/build"
 
 TMP_DIR="/tmp/pkg-${PRGNAME}-${VERSION}"
