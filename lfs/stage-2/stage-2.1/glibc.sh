@@ -66,4 +66,4 @@ cd build || exit 1
 
 make || make -j1 || exit 1
 make install DESTDIR="${LFS}"
-"{$LFS}"/tools/libexec/gcc/"{$LFS_TGT}"/10.2.0/install-tools/mkheaders
+"${LFS}"/tools/libexec/gcc/"${LFS_TGT}"/10.2.0/install-tools/mkheaders
