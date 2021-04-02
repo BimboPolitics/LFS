@@ -25,7 +25,7 @@ cd "${BUILD_DIR}" || exit 1
 rm -rf "${PRGNAME}${MAJ_VER}${MIN_VER}"
 
 tar xvf "${SOURCES}/${PRGNAME}-${VERSION}".tar.?z* || exit 1
-cd "${PRGNAME}${MAJ_VER}${MIN_VER}" || exit 1
+cd "${PRGNAME}-${MAJ_VER}.${MIN_VER}" || exit 1
 
 # изменим расположение файла конфигурации vimrc с /usr/share/vim/vimrc (по
 # умолчанию) на /etc/vimrc
